@@ -13,15 +13,9 @@ const Payment = () => {
     (state) => state.checkout
   );
   const dispatch = useDispatch();
-  const {
-    products,
-    newprodIndex,
-    secondIndex,
-    data,
-    thirdIndex,
-    status,
-    singleprodid,
-  } = useSelector((state) => state.products);
+  const { products, data, singleprodid } = useSelector(
+    (state) => state.products
+  );
   const [isPopup, setPopup] = useState(false);
 
   return (

@@ -9,6 +9,7 @@ import { fetchProducts } from "../redux/slices/InfiniteScroll";
 import Loading from "../components/home/Loading";
 import { dummyData } from "../components/home/Products";
 import { FaChevronDown } from "react-icons/fa";
+import { setIsPaymentOver } from "../redux/slices/ProductsSlice";
 
 const AllProducts = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ const AllProducts = () => {
       setProd(true);
     }
     console.log("data", data);
+    dispatch(setIsPaymentOver(false));
   }, [prod]);
 
   const fetchMore = () => {
@@ -59,7 +61,7 @@ const AllProducts = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-wrap gap-8 ml-20">
+        <div className="flex flex-wrap gap-8 ml-16">
           <div className="flex justify-between w-full">
             <div className="text-lg font-semibold">
               {Allproductsdata.length} &nbsp;Products
@@ -76,7 +78,7 @@ const AllProducts = () => {
             next={fetchMore}
             hasMore={hasMore}
             loader={<Loading />}
-            className="flex flex-wrap gap-10 overflow-hidden"
+            className="flex flex-wrap gap-8 overflow-hidden"
           >
             {Allproductsdata.map((item, index) => (
               <Link key={item.asin} href={`/allproducts/${item.asin}`}>

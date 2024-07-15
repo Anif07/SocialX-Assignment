@@ -104,7 +104,7 @@ const Page = ({ params }) => {
             <div>
               <div className="flex justify-between">
                 <h1 className="font-bold text-3xl h-custom-length72 overflow-hidden">
-                  {title}{" "}
+                  {title}
                 </h1>
                 <span>
                   <CiHeart className="text-2xl" />

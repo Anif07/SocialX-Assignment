@@ -14,28 +14,10 @@ import {
   prevClickForSecondProd,
   prevClickForThirdProd,
   setData,
+  setIsPaymentOver,
 } from "@/app/redux/slices/ProductsSlice";
 import Loading from "./Loading";
 import axios from "axios";
-
-// Function to fetch data
-// const url =
-//   "https://real-time-amazon-data.p.rapidapi.com/search?query=Appliances&page=1&country=US&sort_by=RELEVANCE&product_condition=ALL";
-// // const options = {
-// //   method: "GET",
-// //   headers: {
-// //     "x-rapidapi-key": "a9d12f4a44msh2f8dc13c01c1c07p1b4060jsnf1620aa183a7",
-// //     "x-rapidapi-host": "real-time-amazon-data.p.rapidapi.com",
-// //   },
-// // };
-
-// async function fetchData() {
-//   const res = await fetch(url, options);
-//   if (!res.ok) {
-//     throw new Error("Failed to fetch");
-//   }
-//   return res.json();
-// }
 
 const Products = () => {
   const [loading, setLoading] = useState(true);
@@ -53,6 +35,7 @@ const Products = () => {
       dispatch(setData(JSON.parse(dataFromLocal)));
       setLoading(false);
     }
+    dispatch(setIsPaymentOver(false));
   }, [dispatch]);
 
   useEffect(() => {
@@ -71,7 +54,6 @@ const Products = () => {
     return <div>Your monthly Quota for fetching data is completed</div>;
   }
 
-  //   const visibleProducts = data.slice(startIndex, startIndex + productsperPage);
   const visibleProducts = data.slice(
     newprodIndex,
     newprodIndex + productsperPage
