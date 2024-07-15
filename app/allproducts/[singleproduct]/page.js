@@ -3,22 +3,31 @@ import Navbar from "@/app/components/home/Navbar";
 import React, { useEffect, useState } from "react";
 import { CiHeart } from "react-icons/ci";
 import { LiaRupeeSignSolid } from "react-icons/lia";
-import { FaChevronDown, FaHeart } from "react-icons/fa";
+import {
+  FaAngleLeft,
+  FaAngleRight,
+  FaChevronDown,
+  FaHeart,
+} from "react-icons/fa";
 import Footer from "@/app/components/home/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import Image from "next/image";
 import {
+  nextClickfornewProd,
+  prevClickfornewProd,
   setIsPaymentOver,
   setSingleProdId,
 } from "@/app/redux/slices/ProductsSlice";
+import Prod from "@/app/components/home/Prod";
 
 const Page = ({ params }) => {
-  const { products, data, status, isPaymentOver } = useSelector(
+  const { products, data, status, isPaymentOver, newprodIndex } = useSelector(
     (state) => state.products
   );
   const dispatch = useDispatch();
   const [isfav, setIsfav] = useState(false);
+  const productsperPage = 3;
 
   const [Allproductsdata, setAllProducts] = useState([]);
   const singledata = Allproductsdata.find(
@@ -26,6 +35,10 @@ const Page = ({ params }) => {
   );
 
   dispatch(setSingleProdId(params.singleproduct));
+  const visibleProducts = Allproductsdata.slice(
+    newprodIndex,
+    newprodIndex + productsperPage
+  );
 
   const [prod, setProd] = useState(false);
   console.log(data);
@@ -151,6 +164,44 @@ const Page = ({ params }) => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="px-10 my-14">
+        <h2 className="text-4xl font-bold font-font-pop text-center my-4">
+          YOU MAY ALSO LIKE
+        </h2>
+        <div className="flex overflow-hidden gap-5 justify-between relative px-14">
+          {newprodIndex !== 0 && (
+            <button
+              onClick={() => dispatch(prevClickfornewProd())}
+              className="absolute inset-y-1/2 w-10 h-10 rounded-full bg-white shadow flex justify-center items-center translate-y-translate"
+              style={{
+                left: "40px",
+              }}
+            >
+              <FaAngleLeft />
+            </button>
+          )}
+          {visibleProducts.map((item, index) => (
+            <React.Fragment key={index}>
+              <Link href={`/allproducts/${item.asin}`}>
+                <Prod
+                  key={item.asin}
+                  img={item.product_photo}
+                  title={item.product_title}
+                />
+              </Link>
+            </React.Fragment>
+          ))}
+          {newprodIndex !== data.length - 3 && (
+            <button
+              onClick={() => dispatch(nextClickfornewProd())}
+              className="absolute inset-y-1/2 right-10 w-10 h-10 rounded-full bg-white flex justify-center items-center translate-y-translate shadow"
+              style={{ transform: "translateY(-50%)" }}
+            >
+              <FaAngleRight />
+            </button>
+          )}
         </div>
       </div>
       <Footer />
