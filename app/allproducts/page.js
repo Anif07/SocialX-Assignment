@@ -76,7 +76,7 @@ const AllProducts = () => {
             next={fetchMore}
             hasMore={hasMore}
             loader={<Loading />}
-            className="flex flex-wrap gap-7 overflow-hidden"
+            className="flex flex-wrap gap-6 overflow-hidden"
           >
             {Allproductsdata.map((item, index) => (
               <Link key={item.asin} href={`/allproducts/${item.asin}`}>

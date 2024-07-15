@@ -10,7 +10,7 @@ const ProdWithPrice = ({ img, title, price }) => {
   return (
     <div className="w-96 h-custom-length530 relative mt-6">
       <div className="w-92 bg-bg-color-for-prod h-custom-length440 flex justify-center items-center">
-        <img src={img} className="w-72 h-72 object-cover mix-blend-darken" />
+        <img src={img} className="w-64 h-64 object-cover mix-blend-darken" />
         <h3 className="absolute top-0 right-0 bg-red-600 px-6 py-2 text-gray-50">
           {randomNumber}% OFF
         </h3>
