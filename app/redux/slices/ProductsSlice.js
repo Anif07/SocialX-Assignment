@@ -1,7 +1,5 @@
-// slices/ProductsSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-// Define the initial state
 const initialState = {
   products: [],
   loading: false,
@@ -20,16 +18,15 @@ const url =
 const options = {
   method: "GET",
   headers: {
-    "x-rapidapi-key": "619986e77amshef4f0ef3083e004p1edb00jsn13cdbe45ab44",
+    "x-rapidapi-key": "b16cd0857fmshe18c4bb2fcdffd7p10d198jsn5590571c952a",
     "x-rapidapi-host": "real-time-amazon-data.p.rapidapi.com",
   },
 };
 
-// Define the thunk for fetching products
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async () => {
-    const response = await fetch(url, options); // Replace with your API endpoint
+    const response = await fetch(url, options);
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -38,7 +35,6 @@ export const fetchProducts = createAsyncThunk(
   }
 );
 
-// Create the slice
 const productsSlice = createSlice({
   name: "products",
   initialState,

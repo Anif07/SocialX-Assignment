@@ -1,10 +1,9 @@
 "use client";
 import Navbar from "@/app/components/home/Navbar";
-// import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { CiHeart } from "react-icons/ci";
 import { LiaRupeeSignSolid } from "react-icons/lia";
-import { FaChevronDown } from "react-icons/fa";
+import { FaChevronDown, FaHeart } from "react-icons/fa";
 import Footer from "@/app/components/home/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
@@ -15,16 +14,11 @@ import {
 } from "@/app/redux/slices/ProductsSlice";
 
 const Page = ({ params }) => {
-  const {
-    products,
-    newprodIndex,
-    secondIndex,
-    data,
-    thirdIndex,
-    status,
-    isPaymentOver,
-  } = useSelector((state) => state.products);
+  const { products, data, status, isPaymentOver } = useSelector(
+    (state) => state.products
+  );
   const dispatch = useDispatch();
+  const [isfav, setIsfav] = useState(false);
 
   const [Allproductsdata, setAllProducts] = useState([]);
   const singledata = Allproductsdata.find(
@@ -67,7 +61,10 @@ const Page = ({ params }) => {
       <div className="h-custom-length600 p-11 mb-16">
         <div className="h-custom-length530 w-custom-length1100 flex gap-6 m-auto">
           <div className="w-custom-length623 h-custom-length530">
-            <div className="my-4">Home / Products / product</div>
+            <div className="my-4">
+              <Link href="/">Home</Link> /{" "}
+              <Link href="/allproducts">Products</Link> / product
+            </div>
             <div className="flex gap-6">
               <div className="w-24">
                 <img
@@ -107,7 +104,21 @@ const Page = ({ params }) => {
                   {title}
                 </h1>
                 <span>
-                  <CiHeart className="text-2xl" />
+                  {isfav ? (
+                    <FaHeart
+                      className="text-2xl cursor-pointer text-red-600"
+                      onClick={() => {
+                        setIsfav(false);
+                      }}
+                    />
+                  ) : (
+                    <CiHeart
+                      className="text-2xl cursor-pointer"
+                      onClick={() => {
+                        setIsfav(true);
+                      }}
+                    />
+                  )}
                 </span>
               </div>
               <h2 className="flex my-2 items-center text-red-600 font-bold text-lg">

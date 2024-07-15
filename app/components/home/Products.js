@@ -20,8 +20,6 @@ import Loading from "./Loading";
 import axios from "axios";
 
 const Products = () => {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const { products, newprodIndex, secondIndex, data, thirdIndex, status } =
     useSelector((state) => state.products);
   const dispatch = useDispatch();
@@ -33,7 +31,6 @@ const Products = () => {
       dispatch(fetchProducts());
     } else {
       dispatch(setData(JSON.parse(dataFromLocal)));
-      setLoading(false);
     }
     dispatch(setIsPaymentOver(false));
   }, [dispatch]);
@@ -42,7 +39,6 @@ const Products = () => {
     if (products.length > 0) {
       localStorage.setItem("products", JSON.stringify(products));
       dispatch(setData(products));
-      setLoading(false);
     }
   }, [products]);
 

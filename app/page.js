@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-// import { Provider } from "react-redux";
 import Navbar from "./components/home/Navbar";
 import Banner from "./components/home/Banner";
 import Footer from "./components/home/Footer";

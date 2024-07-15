@@ -5,9 +5,7 @@ import ProdWithPrice from "../components/home/ProdWithPrice";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { fetchProducts } from "../redux/slices/InfiniteScroll";
 import Loading from "../components/home/Loading";
-import { dummyData } from "../components/home/Products";
 import { FaChevronDown } from "react-icons/fa";
 import { setIsPaymentOver } from "../redux/slices/ProductsSlice";
 
@@ -61,7 +59,7 @@ const AllProducts = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-wrap gap-8 ml-16">
+        <div className="flex flex-wrap gap-8 ml-14">
           <div className="flex justify-between w-full">
             <div className="text-lg font-semibold">
               {Allproductsdata.length} &nbsp;Products
@@ -78,7 +76,7 @@ const AllProducts = () => {
             next={fetchMore}
             hasMore={hasMore}
             loader={<Loading />}
-            className="flex flex-wrap gap-8 overflow-hidden"
+            className="flex flex-wrap gap-7 overflow-hidden"
           >
             {Allproductsdata.map((item, index) => (
               <Link key={item.asin} href={`/allproducts/${item.asin}`}>
