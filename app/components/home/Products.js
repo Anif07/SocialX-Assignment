@@ -218,7 +218,7 @@ const Products = () => {
         </div>
         <div className="w-custom-length592 order-2">
           <img
-            src="/Assets/bg.png"
+            src="/Assets/weeklydisc.png"
             alt="discount"
             className="w-custom-length592 h-custom-length672 object-cover"
           />
