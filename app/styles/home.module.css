@@ -1,0 +1,22 @@
+.macc {
+  color: red;
+  font-family: "Monotype Corsiva", cursive;
+}
+.essential {
+  color: blue;
+  font-family: "Monotype Corsiva", cursive;
+}
+.banner {
+  width: 1366px;
+  height: 614px;
+  background-color: #f8f8f8;
+}
+.ban_first_item {
+  width: 578px;
+  height: 397px;
+}
+.ban_head {
+  font-size: 54px;
+  color: #3a408c;
+  width: 600px;
+}
