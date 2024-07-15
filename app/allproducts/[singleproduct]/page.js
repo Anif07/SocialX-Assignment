@@ -73,29 +73,29 @@ const Page = ({ params }) => {
                 <img
                   src={singledata?.product_photo}
                   alt="img"
-                  className="w-24 h-24 object-cover mt-3"
+                  className="w-24 h-24 object-cover mt-3 mix-blend-darken"
                 />
                 <img
                   src={singledata?.product_photo}
                   alt="img"
-                  className="w-24 h-24 object-cover mt-3"
+                  className="w-24 h-24 object-cover mt-3 mix-blend-darken"
                 />
                 <img
                   src={singledata?.product_photo}
                   alt="img"
-                  className="w-24 h-24 object-cover mt-3"
+                  className="w-24 h-24 object-cover mt-3 mix-blend-darken"
                 />
                 <img
                   src={singledata?.product_photo}
                   alt="img"
-                  className="w-24 h-24 object-cover mt-3"
+                  className="w-24 h-24 object-cover mt-3 mix-blend-darken"
                 />
               </div>
               <div className="w-custom-length514 h-custom-length514 bg-bg-color-for-prod flex justify-center items-center">
                 <img
                   src={singledata?.product_photo}
                   alt="prod"
-                  className="w-custom-length428 h-custom-length428 object-cover"
+                  className="w-custom-length428 h-custom-length428 object-cover mix-blend-darken"
                 />
               </div>
             </div>
